@@ -1,9 +1,12 @@
-# Don't Remove Credit Tg - @VJ_Botz
-# Subscribe YouTube Channel For Amazing Bot https://youtube.com/@Tech_VJ
-# Ask Doubt on telegram @KingVJ01
+import os
+from flask import Flask
 
-from client import Bot
+app = Flask(__name__)
 
-print("Bot Started 👍 Powered By @VJ_Botz")
-Bot().run()
+@app.route("/")
+def home():
+    return "Bot is running!"
 
+if __name__ == "__main__":
+    port = int(os.environ.get("PORT", 10000))
+    app.run(host="0.0.0.0", port=port)

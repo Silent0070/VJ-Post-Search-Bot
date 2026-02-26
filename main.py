@@ -30,7 +30,7 @@ def webhook():
 
 async def main():
     await bot.start()
-    await bot.set_webhook(f"https://YOUR-RENDER-URL.onrender.com/{BOT_TOKEN}")
+    await bot.set_webhook(f"https://vj-post-search-bot-1wko.onrender.com/{BOT_TOKEN}")
     print("Webhook set successfully")
 
 if __name__ == "__main__":

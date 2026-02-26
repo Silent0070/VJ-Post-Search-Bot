@@ -4,13 +4,13 @@
 
 FROM python:3.10.8-slim-buster
 
-RUN apt update && apt upgrade -y
-RUN apt install git -y
-COPY requirements.txt /requirements.txt
+RUN apt update && apt install -y git
 
-RUN cd /
-RUN pip3 install -U pip && pip3 install -U -r requirements.txt
-RUN mkdir /VJ-Post-Search-Bot
+COPY requirements.txt /requirements.txt
+RUN pip install --upgrade pip
+RUN pip install -r /requirements.txt
+
 WORKDIR /VJ-Post-Search-Bot
-COPY . /VJ-Post-Search-Bot
-CMD gunicorn app:app & python3 main.py
+COPY . .
+
+CMD ["python3", "main.py"]

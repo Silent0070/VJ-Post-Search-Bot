@@ -2,15 +2,19 @@
 # Subscribe YouTube Channel For Amazing Bot @Tech_VJ
 # Ask Doubt on telegram @KingVJ01
 
-FROM python:3.10.8-slim-buster
+FROM python:3.10-slim
 
-RUN apt update && apt install -y git
+RUN apt-get update && \
+    apt-get install -y git && \
+    apt-get clean && \
+    rm -rf /var/lib/apt/lists/*
 
-COPY requirements.txt /requirements.txt
+WORKDIR /app
+
+COPY requirements.txt .
 RUN pip install --upgrade pip
-RUN pip install -r /requirements.txt
+RUN pip install -r requirements.txt
 
-WORKDIR /VJ-Post-Search-Bot
 COPY . .
 
 CMD ["python3", "main.py"]
